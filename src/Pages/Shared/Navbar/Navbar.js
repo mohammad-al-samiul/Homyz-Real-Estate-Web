@@ -16,8 +16,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
-      <div className="navbar bg-base-100">
+    <>
+      <div className="max-w-[1400px] navbar bg-black fixed z-10 bg-opacity-30 text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -46,14 +46,11 @@ const Navbar = () => {
             Regal Dragon
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 
