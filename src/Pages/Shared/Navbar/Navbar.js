@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const navItems = (
     <>
-      <li>
+      <li className="hover:bg-white hover:text-black ">
         <Link to={'/home'}>Home</Link>
       </li>
-      <li>
-        <Link to={'/contact-us'}>Contact Us</Link>
+      <li className="hover:bg-white hover:text-black hover:rounded-md">
+        <Link to={'/contact-us'}>Contact</Link>
       </li>
-      <li>
+      <li className="hover:bg-white hover:text-black hover:rounded-md">
         <Link to={'/about'}>About</Link>
       </li>
     </>
@@ -42,7 +42,6 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to={'/'} className="btn btn-ghost normal-case text-xl">
-            {' '}
             Regal Dragon
           </Link>
         </div>
