@@ -16,18 +16,16 @@ const Category = () => {
     <>
       <SectionTitle heading={'Order Online'} subHeading={'From 11.00 am to 10.00pm'}></SectionTitle>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
+        slidesPerView={3}
+        spaceBetween={10}
         pagination={{
           clickable: true
         }}
         modules={[Pagination]}
-        className="mySwiper mb-10 mx-20">
+        className="mySwiper mb-10 lg:mx-20">
         <SwiperSlide>
           <img src={slide1} alt="" />
-          <h3 className="text-center lg:text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
-            Salads
-          </h3>
+          <h3 className="text-center lg:text-4xl uppercase -mt-16 text-white">Salads</h3>
         </SwiperSlide>
 
         <SwiperSlide>

@@ -5,13 +5,13 @@ import './CheckMenu.css';
 
 const CheckMenu = () => {
   return (
-    <div className="feature-menu ">
-      <div>
+    <div className="feature-menu bg-cover bg-center bg-no-repeat">
+      <div className="pt-5 text-slate-600">
         <SectionTitle heading={'From Our Menu'} subHeading={'Check it Out'}></SectionTitle>
       </div>
-      <div className="flex justify-center items-center p-20  space-x-7 ">
-        <img width={'600px'} src={featureImage} alt="" />
-        <div className="text-white bg-black bg-opacity-30 p-6 shadow-inner">
+      <div className="lg:flex justify-center items-center lg:p-20  lg:space-x-7 ">
+        <img className="lg:w-[600px] " src={featureImage} alt="" />
+        <div className="text-white bg-black bg-opacity-30 lg:p-6 py-6 px-4">
           <h4>September 5, 2023</h4>
           <p className="uppercase">Where can i get some ?</p>
           <p>
