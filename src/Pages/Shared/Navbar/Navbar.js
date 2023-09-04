@@ -1,17 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      backgroundColor: isActive ? 'white' : '',
+      color: isActive ? 'black' : ''
+    };
+  };
+
   const navItems = (
     <>
-      <li className="hover:bg-white hover:text-black ">
-        <Link to={'/home'}>Home</Link>
+      <li className="hover:bg-white hover:font-bold hover:rounded-lg">
+        <NavLink to={'/home'} style={navLinkStyles}>
+          Home
+        </NavLink>
       </li>
-      <li className="hover:bg-white hover:text-black hover:rounded-md">
-        <Link to={'/contact-us'}>Contact</Link>
+      <li className="hover:bg-white hover:font-bold hover:rounded-lg">
+        <NavLink to={'/contact-us'} style={navLinkStyles}>
+          Contact
+        </NavLink>
       </li>
-      <li className="hover:bg-white hover:text-black hover:rounded-md">
-        <Link to={'/about'}>About</Link>
+      <li className="hover:bg-white hover:font-bold hover:rounded-lg">
+        <NavLink to={'/about'} style={navLinkStyles}>
+          About
+        </NavLink>
       </li>
     </>
   );

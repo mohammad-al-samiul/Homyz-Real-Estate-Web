@@ -16,41 +16,41 @@ const Category = () => {
     <>
       <SectionTitle heading={'Order Online'} subHeading={'From 11.00 am to 10.00pm'}></SectionTitle>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={4}
         spaceBetween={30}
         pagination={{
           clickable: true
         }}
         modules={[Pagination]}
-        className="mySwiper mb-10">
+        className="mySwiper mb-10 mx-20">
         <SwiperSlide>
           <img src={slide1} alt="" />
-          <h3 className="text-center text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
+          <h3 className="text-center lg:text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
             Salads
           </h3>
         </SwiperSlide>
 
         <SwiperSlide>
           <img src={slide2} alt="" />
-          <h3 className="text-center text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
+          <h3 className="text-center lg:text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
             Pizzas
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide3} alt="" />
-          <h3 className="text-center text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
+          <h3 className="text-center lg:text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
             Soups
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide4} alt="" />
-          <h3 className="text-center text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
+          <h3 className="text-center lg:text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
             Desserts
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide5} alt="" />
-          <h3 className="text-center text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
+          <h3 className="text-center lg:text-4xl uppercase text-white -mt-16 drop-shadow-2xl">
             Salads
           </h3>
         </SwiperSlide>
