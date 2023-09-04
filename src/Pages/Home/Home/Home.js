@@ -1,6 +1,7 @@
 import React from 'react';
 import CheckMenu from '../../CheckMenu/CheckMenu';
 import PopularMenu from '../../PopularMenu/PopularMenu';
+import Testimonial from '../../Testimonial/Testimonial';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
 
@@ -11,6 +12,7 @@ const Home = () => {
       <Category />
       <PopularMenu />
       <CheckMenu />
+      <Testimonial />
     </div>
   );
 };

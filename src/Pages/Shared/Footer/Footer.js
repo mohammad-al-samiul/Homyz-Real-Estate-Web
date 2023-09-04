@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 const Footer = () => {
   const style = { color: 'white', fontSize: '24px' };
   return (
-    <footer className="flex text-center">
+    <footer className="flex text-center mt-20">
       <div className="w-full lg:w-1/2 bg-[#1F2937] grid text-white p-8">
         <span className="text-2xl font-bold">Contact US</span>
         <a className="link link-hover">123 ABS Street, Uni 21, Bangladesh</a>
