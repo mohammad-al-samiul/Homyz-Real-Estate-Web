@@ -1,22 +1,38 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import menuImage from '../../Assets/menu/banner3.jpg';
+import dessertsImg from '../../Assets/menu/dessert-bg.jpeg';
+import pizzaImg from '../../Assets/menu/pizza-bg.jpg';
+import saladImg from '../../Assets/menu/salad-bg.jpg';
+import soupImg from '../../Assets/menu/soup-bg.jpg';
 import Cover from '../../Components/Cover/Cover';
-import PopularMenu from '../PopularMenu/PopularMenu';
+import SectionTitle from '../../Components/SectionTitle/SectionTitle';
+import useMenu from '../Hooks/useMenu';
+import MenuCategory from '../MenuCategory/MenuCategory';
 
 const Menu = () => {
-  const text1 = <>Would you like to try a dish?</>;
+  const [menu] = useMenu();
+
+  const desserts = menu.filter((item) => item.category === 'dessert');
+
+  const soup = menu.filter((item) => item.category === 'soup');
+  const salad = menu.filter((item) => item.category === 'salad');
+  const pizza = menu.filter((item) => item.category === 'pizza');
+  const offered = menu.filter((item) => item.category === 'offered');
+
   return (
     <div>
       <Helmet>
         <title>Regal Dragon | Menu</title>
       </Helmet>
-      <Cover menuImage={menuImage} title={'Our Menu'} text1={text1} />
-      <PopularMenu />
-      <Cover menuImage={menuImage} title={'Our Menu'} text1={text1} />
-      <PopularMenu />
-      <Cover menuImage={menuImage} title={'Our Menu'} text1={text1} />
-      <PopularMenu />
+      <Cover menuImage={menuImage} title={'Our Menu'} />
+      <SectionTitle heading={`Today's Offer`} subHeading={`Don't Miss`} />
+      <MenuCategory items={offered} />
+      <MenuCategory items={desserts} title={`Desserts`} image={dessertsImg} />
+      <MenuCategory items={soup} title={`Soup`} image={soupImg} />
+      <MenuCategory items={salad} title={`Salad`} image={saladImg} />
+      <MenuCategory items={pizza} title={`Pizza`} image={pizzaImg} />
     </div>
   );
 };
