@@ -5,8 +5,8 @@ import './CheckMenu.css';
 
 const CheckMenu = () => {
   return (
-    <div className="feature-menu bg-cover bg-center bg-no-repeat">
-      <div className="pt-5 text-slate-600">
+    <div className="feature-menu bg-cover bg-center bg-no-repeat bg-fixed">
+      <div className=" pt-5 text-gray-700 ">
         <SectionTitle heading={'From Our Menu'} subHeading={'Check it Out'}></SectionTitle>
       </div>
       <div className="lg:flex justify-center items-center lg:p-20  lg:space-x-7 ">
