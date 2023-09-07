@@ -14,7 +14,7 @@ const Cover = ({ menuImage, title }) => {
         <div className="hero lg:h-[600px] text-white">
           <div className="bg-black bg-opacity-40 lg:p-16 hero-content text-center">
             <div className="max-w-md">
-              <h1 className="text-5xl font-bold">{title}</h1>
+              <h1 className="text-5xl font-bold uppercase">{title}</h1>
               <p className="py-6">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque vel rerum amet
                 excepturi, nobis provident iusto magnam facere vitae quo.

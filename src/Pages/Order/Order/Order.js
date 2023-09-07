@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import coverImage from '../../../Assets/shop/banner2.jpg';
@@ -9,11 +10,16 @@ import OrderTab from '../../../Components/OrderTab/OrderTab';
 import useMenu from '../../Hooks/useMenu';
 
 const Order = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const categories = ['salad', 'pizza', 'soup', 'desserts', 'drinks'];
+  const { category } = useParams();
+  //   console.log(category);
+  const initialIndex = categories.indexOf(category);
+
+  const [tabIndex, setTabIndex] = useState(initialIndex);
+
   const [menu] = useMenu();
 
   const desserts = menu.filter((item) => item.category === 'dessert');
-
   const soups = menu.filter((item) => item.category === 'soup');
   const salads = menu.filter((item) => item.category === 'salad');
   const pizzas = menu.filter((item) => item.category === 'pizza');
@@ -25,7 +31,7 @@ const Order = () => {
       </Helmet>
       <Cover menuImage={coverImage} title={`Order Food`} />
       <div className="mt-10 text-center">
-        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>SALAD</Tab>
             <Tab>PIZZA</Tab>

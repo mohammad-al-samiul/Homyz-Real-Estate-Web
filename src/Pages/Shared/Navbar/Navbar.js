@@ -28,7 +28,7 @@ const Navbar = () => {
       </li>
       <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
         <NavLink to={'/order'} style={navLinkStyles}>
-          Oder Food
+          Order Food
         </NavLink>
       </li>
       <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
