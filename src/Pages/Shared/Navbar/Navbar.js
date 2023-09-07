@@ -27,6 +27,11 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
+        <NavLink to={'/order'} style={navLinkStyles}>
+          Oder Food
+        </NavLink>
+      </li>
+      <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
         <NavLink to={'/contact-us'} style={navLinkStyles}>
           Contact
         </NavLink>

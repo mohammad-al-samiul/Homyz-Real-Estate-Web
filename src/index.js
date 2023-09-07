@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'react-tabs/style/react-tabs.css';
 import App from './App';
 import './index.css';
 
