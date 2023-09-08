@@ -37,10 +37,20 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
+        <NavLink to={'/login'} style={navLinkStyles}>
+          Log in
+        </NavLink>
+      </li>
+      <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
+        <NavLink to={'/signup'} style={navLinkStyles}>
+          Sign Up
+        </NavLink>
+      </li>
+      {/* <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
         <NavLink to={'/about'} style={navLinkStyles}>
           About
         </NavLink>
-      </li>
+      </li> */}
     </>
   );
   return (
