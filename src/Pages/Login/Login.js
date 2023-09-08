@@ -1,6 +1,21 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useRef, useState } from 'react';
+import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
+  const [disable, setDisable] = useState(true);
+  const captchaRef = useRef();
+
+  const handleCaptcha = () => {
+    const user_captcha_value = captchaRef.current.value;
+    if (validateCaptcha(user_captcha_value) == true) {
+      setDisable(false);
+    }
+  };
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -41,14 +56,25 @@ const Login = () => {
                 placeholder="password"
                 className="input input-bordered"
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
+            <div className="form-control">
+              <label className="label px-0">
+                <LoadCanvasTemplate />
+              </label>
+              <input
+                ref={captchaRef}
+                type="text"
+                name="captcha"
+                placeholder="Type Here"
+                className="input input-bordered"
+              />
+              <button onClick={handleCaptcha} className="btn btn-sm btn-outline btn-accent">
+                Accent
+              </button>
+            </div>
+
             <div className="form-control mt-6">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input disabled={disable} className="btn btn-primary" type="submit" value="Login" />
             </div>
           </form>
         </div>
