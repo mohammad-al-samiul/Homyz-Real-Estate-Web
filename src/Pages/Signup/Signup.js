@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import authBgImage from '../../Assets/others/authentication.png';
@@ -40,17 +41,21 @@ const Signup = () => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    createUser(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      profileUpdate(name)
-        .then(() => {
-          console.log('profile updated');
-          reset();
-          navigate(from, { replace: true });
-        })
-        .catch((error) => console.log(error.message));
-    });
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        toast.success('User created successfully');
+        profileUpdate(name)
+          .then(() => {
+            reset();
+            navigate(from, { replace: true });
+          })
+          .catch((error) => console.log(error.message));
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
   };
 
   return (
