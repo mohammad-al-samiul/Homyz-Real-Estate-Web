@@ -36,7 +36,7 @@ const Login = () => {
         <div className="lg:w-1/2">
           <img src={authentication2} alt="" />
         </div>
-        <div className="card  lg:w-96 ">
+        <div className="card  lg:w-2/5 ">
           <form onSubmit={handleSubmit} className="card-body">
             <h3 className="text-2xl font-bold text-center">Login </h3>
             <div className="form-control">
@@ -73,7 +73,9 @@ const Login = () => {
                 className="mt-10 input input-bordered"
               />
 
-              <button className="mt-5 btn btn-sm bg-green-500 hover:bg-green-600 text-white font-semibold px-4 ">
+              <button
+                onClick={handleCaptcha}
+                className="mt-5 btn btn-sm bg-green-500 hover:bg-green-600 text-white font-semibold px-4 ">
                 Verify
               </button>
             </div>
