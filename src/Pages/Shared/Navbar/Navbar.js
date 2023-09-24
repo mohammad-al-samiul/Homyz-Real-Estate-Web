@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProvider';
 import './Navbar.css';
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen(!open);
@@ -12,6 +14,12 @@ const Navbar = () => {
       backgroundColor: isActive ? 'white' : '',
       color: isActive ? 'black' : ''
     };
+  };
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error.message));
   };
 
   const navItems = (
@@ -37,6 +45,23 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
+        <NavLink to={'/secret'} style={navLinkStyles}>
+          Secret
+        </NavLink>
+      </li>
+      {user ? (
+        <>
+          <li
+            onClick={(handleToggle, handleLogout)}
+            className="hover:bg-white hover:font-bold hover:rounded-lg">
+            <button style={navLinkStyles}>Contact</button>
+          </li>
+        </>
+      ) : (
+        <> </>
+      )}
+
+      <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
         <NavLink to={'/login'} style={navLinkStyles}>
           Log in
         </NavLink>
@@ -46,13 +71,9 @@ const Navbar = () => {
           Sign Up
         </NavLink>
       </li>
-      {/* <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
-        <NavLink to={'/about'} style={navLinkStyles}>
-          About
-        </NavLink>
-      </li> */}
     </>
   );
+
   return (
     <>
       <div className="max-w-[1400px] navbar bg-black fixed z-10 bg-opacity-30 text-white">
