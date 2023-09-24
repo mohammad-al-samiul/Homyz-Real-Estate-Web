@@ -1,10 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
-
+import authBgImage from '../../Assets/others/authentication.png';
+import authentication2 from '../../Assets/others/authentication2.png';
+import { AuthContext } from '../../Providers/AuthProvider';
+import './Login.css';
 const Login = () => {
   const [disable, setDisable] = useState(true);
   const captchaRef = useRef();
+  const { signIn } = useContext(AuthContext);
 
   const handleCaptcha = () => {
     const user_captcha_value = captchaRef.current.value;
@@ -22,19 +26,19 @@ const Login = () => {
     const name = form.email.value;
     const password = form.password.value;
     console.log({ name, password });
+    signIn(name, password).then((result) => {
+      console.log(result.user);
+    });
   };
   return (
-    <div className="hero p-10 bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-            exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
-          </p>
+    <div style={{ backgroundImage: `url(${authBgImage})` }} className="p-24 bg-base-200 ">
+      <div className="p-8 lg:flex lg:flex-row justify-center items-center border-x-4 border-y-4  shadow-lg">
+        <div className="lg:w-1/2">
+          <img src={authentication2} alt="" />
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card  lg:w-96 ">
           <form onSubmit={handleSubmit} className="card-body">
+            <h3 className="text-2xl font-bold text-center">Login </h3>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -58,7 +62,7 @@ const Login = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label px-0">
+              <label className="input input-bordered  mt-6">
                 <LoadCanvasTemplate />
               </label>
               <input
@@ -66,15 +70,21 @@ const Login = () => {
                 type="text"
                 name="captcha"
                 placeholder="Type Here"
-                className="input input-bordered"
+                className="mt-10 input input-bordered"
               />
-              <button onClick={handleCaptcha} className="btn btn-sm btn-outline btn-accent">
-                Accent
+
+              <button className="mt-5 btn btn-sm bg-green-500 hover:bg-green-600 text-white font-semibold px-4 ">
+                Verify
               </button>
             </div>
 
             <div className="form-control mt-6">
-              <input disabled={disable} className="btn btn-primary" type="submit" value="Login" />
+              <input
+                disabled={disable}
+                className="btn text-white bg-orange-300 hover:bg-orange-300"
+                type="submit"
+                value="Login"
+              />
             </div>
           </form>
         </div>
