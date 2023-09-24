@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import authBgImage from '../../Assets/others/authentication.png';
 import authentication2 from '../../Assets/others/authentication2.png';
@@ -80,7 +81,7 @@ const Login = () => {
               </button>
             </div>
 
-            <div className="form-control mt-6">
+            <div className="form-control mt-3">
               <input
                 disabled={disable}
                 className="btn text-white bg-orange-300 hover:bg-orange-300"
@@ -89,6 +90,12 @@ const Login = () => {
               />
             </div>
           </form>
+          <div className="text-center mt-3">
+            <Link className="text-orange-300 hover:underline" to={'/signup'}>
+              Now Here ? Create a New Account
+            </Link>
+            <p>Or sign in with</p>
+          </div>
         </div>
       </div>
     </div>
