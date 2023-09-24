@@ -17,13 +17,13 @@ const Signup = () => {
     formState: { errors }
   } = useForm();
 
+  const [disable, setDisable] = useState(true);
+  const { createUser, profileUpdate } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || '/';
-
-  const [disable, setDisable] = useState(true);
-  const { createUser, profileUpdate } = useContext(AuthContext);
 
   const handleCaptcha = (e) => {
     const user_captcha_value = e.target.value;
@@ -44,6 +44,7 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        console.log(user);
         toast.success('User created successfully');
         profileUpdate(name)
           .then(() => {
@@ -52,10 +53,7 @@ const Signup = () => {
           })
           .catch((error) => console.log(error.message));
       })
-      .catch((error) => {
-        console.log(error.message);
-        toast.error(error.message);
-      });
+      .catch((error) => console.log(error.message));
   };
 
   return (

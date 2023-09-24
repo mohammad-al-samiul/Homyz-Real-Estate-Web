@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import './Navbar.css';
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, loading, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen(!open);
@@ -15,6 +16,9 @@ const Navbar = () => {
       color: isActive ? 'black' : ''
     };
   };
+  // if (loading) {
+  //   return <div>loading...</div>;
+  // }
 
   const handleLogout = () => {
     logOut()
@@ -44,33 +48,36 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
-      <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
-        <NavLink to={'/secret'} style={navLinkStyles}>
-          Secret
-        </NavLink>
-      </li>
       {user ? (
         <>
-          <li
-            onClick={(handleToggle, handleLogout)}
-            className="hover:bg-white hover:font-bold hover:rounded-lg">
-            <button style={navLinkStyles}>Contact</button>
+          <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
+            <NavLink to={'/secret'} style={navLinkStyles}>
+              Secret
+            </NavLink>
+          </li>
+          <li>
+            <button
+              onClick={handleLogout}
+              className="hover:bg-white hover:font-bold hover:rounded-lg
+            ">
+              Logout
+            </button>
           </li>
         </>
       ) : (
-        <> </>
+        <>
+          <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
+            <NavLink to={'/login'} style={navLinkStyles}>
+              Log in
+            </NavLink>
+          </li>
+          <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
+            <NavLink to={'/signup'} style={navLinkStyles}>
+              Sign Up
+            </NavLink>
+          </li>
+        </>
       )}
-
-      <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
-        <NavLink to={'/login'} style={navLinkStyles}>
-          Log in
-        </NavLink>
-      </li>
-      <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
-        <NavLink to={'/signup'} style={navLinkStyles}>
-          Sign Up
-        </NavLink>
-      </li>
     </>
   );
 
