@@ -73,13 +73,18 @@ const Signup = () => {
                 name="password"
                 {...register('password', {
                   required: 'Password is require',
-                  minLength: 6,
-                  maxLength: 20
+                  pattern:
+                    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/
                 })}
                 placeholder="password"
                 className="input input-bordered"
               />
-              {errors.password && <p className="text-red-600">{errors.password.message}</p>}
+              {errors.password?.type === 'required' && (
+                <p className="text-red-600">{errors.password.message}</p>
+              )}
+              {errors.password?.type === 'pattern' && (
+                <p className="text-red-600">Password must be strong </p>
+              )}
             </div>
             <div className="form-control">
               <label className="input input-bordered  mt-6">
@@ -95,7 +100,7 @@ const Signup = () => {
 
               <button
                 onClick={handleCaptcha}
-                className="mt-5 btn btn-sm bg-green-500 hover:bg-green-600 text-white font-semibold px-4 ">
+                className="mt-5 btn btn-sm bg-orange-300 hover:bg-orange-300 text-white font-semibold px-4 ">
                 Verify
               </button>
             </div>
