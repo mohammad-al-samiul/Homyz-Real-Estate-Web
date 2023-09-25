@@ -4,20 +4,22 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useCart from '../../Pages/Hooks/useCart';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const FoodCard = ({ item }) => {
   const { name, recipe, image, price, _id } = item;
 
+  const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
 
   const { user } = useContext(AuthContext);
   const handleAddProduct = (item) => {
-    console.log(item);
+    //  console.log(item);
     if (user && user?.email) {
       const OrderItem = { menuItemId: _id, name, image, price, email: user?.email };
-      console.log(OrderItem);
+      //  console.log(OrderItem);
       fetch(`http://localhost:5000/carts`, {
         method: 'POST',
         headers: {
@@ -27,8 +29,9 @@ const FoodCard = ({ item }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          //  console.log(data);
           if (data.insertedId) {
+            refetch(); //to update cart length
             toast.success('Product Added Successfully');
           }
         });
