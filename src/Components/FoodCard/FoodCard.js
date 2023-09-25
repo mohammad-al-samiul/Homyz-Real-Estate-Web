@@ -1,24 +1,34 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const FoodCard = ({ item }) => {
-  const { name, recipe, image, price } = item;
+  const { name, recipe, image, price, _id } = item;
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { user } = useContext(AuthContext);
   const handleAddProduct = (item) => {
     console.log(item);
-    if (user) {
-      fetch(`http://localhost:5000/`)
+    if (user && user?.email) {
+      const OrderItem = { menuItemId: _id, name, image, price, email: user?.email };
+      console.log(OrderItem);
+      fetch(`http://localhost:5000/carts`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(OrderItem)
+      })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           if (data.insertedId) {
-            console.log(data);
             toast.success('Product Added Successfully');
           }
         });
@@ -33,7 +43,7 @@ const FoodCard = ({ item }) => {
         confirmButtonText: 'Login'
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login');
+          navigate('/login', { state: { from: location } });
         }
       });
     }
@@ -48,7 +58,9 @@ const FoodCard = ({ item }) => {
         <h2 className="card-title">{name}</h2>
         <p>{recipe}</p>
         <div onClick={() => handleAddProduct(item)} className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="mt-3 mb-10 btn btn-outline-secondary font-bold  border-0 border-b-4 border-yellow-500 hover:border-b-4 hover:border-slate-800">
+            Buy Now
+          </button>
         </div>
       </div>
     </div>
