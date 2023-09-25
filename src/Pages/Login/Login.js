@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Regal Dragon | Sign up</title>
+        <title>Regal Dragon | Login</title>
       </Helmet>
 
       <div style={{ backgroundImage: `url(${authBgImage})` }} className="p-24 bg-base-200 ">
