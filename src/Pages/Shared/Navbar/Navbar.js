@@ -98,8 +98,8 @@ const Navbar = () => {
       {user ? (
         <>
           <li onClick={handleToggle} className="hover:bg-white hover:font-bold hover:rounded-lg">
-            <NavLink to={'/secret'} style={navLinkStyles}>
-              Secret
+            <NavLink to={'/dashboard'} style={navLinkStyles}>
+              Dashboard
             </NavLink>
           </li>
           <li>
