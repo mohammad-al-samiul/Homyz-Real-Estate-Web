@@ -44,10 +44,24 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        toast.success('User created successfully');
+        //console.log(user);
+
         profileUpdate(name)
           .then(() => {
+            const user = { name, email };
+            fetch(`http://localhost:5000/users`, {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(user)
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  toast.success('User created successfully');
+                }
+              });
             reset();
             navigate(from, { replace: true });
           })

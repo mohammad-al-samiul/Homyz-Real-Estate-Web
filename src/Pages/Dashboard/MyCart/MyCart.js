@@ -25,7 +25,7 @@ const MyCart = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            //  console.log(data);
             if (data.deletedCount) {
               refetch();
               Swal.fire('Deleted!', `${item.name} has been deleted.`, 'success');
