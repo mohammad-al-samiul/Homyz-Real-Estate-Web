@@ -7,7 +7,7 @@ import {
   FaShoppingCart,
   FaWallet
 } from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
   return (
@@ -22,43 +22,43 @@ const DashboardLayout = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <ul className="menu p-4 w-80 min-h-full  text-base-content bg-[#D1A054]">
           {/* Sidebar content here */}
           <li>
-            <Link to={'/user-home'}>
+            <NavLink to={'/user-home'}>
               <FaHome></FaHome> <span className="mt-1">User Home</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={'/reservation'}>
+            <NavLink to={'/reservation'}>
               <FaCalendarAlt></FaCalendarAlt> <span className="mt-1">Reservation</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={'/payment'}>
+            <NavLink to={'/payment'}>
               <FaWallet></FaWallet> <span className="mt-1">Payment History</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={'/my-cart'}>
+            <NavLink to={'/dashboard/my-cart'}>
               <FaShoppingCart></FaShoppingCart> <span className="mt-1"> My Cart</span>
-            </Link>
+            </NavLink>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to={'/home'}>
+            <NavLink to={'/home'}>
               <FaHome></FaHome> <span className="mt-1"> Home</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={'/home'}>
+            <NavLink to={'/home'}>
               <FaHamburger></FaHamburger> <span className="mt-1"> Our Menu</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={'/home'}>
+            <NavLink to={'/home'}>
               <FaShopify></FaShopify> <span className="mt-1"> Order Food</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
