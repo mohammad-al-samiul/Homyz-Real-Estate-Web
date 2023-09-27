@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile
 } from 'firebase/auth';
@@ -17,6 +19,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const googleProvider = new GoogleAuthProvider();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -26,6 +29,11 @@ const AuthProvider = ({ children }) => {
   const signIn = (email, passowrd) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, passowrd);
+  };
+
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
   };
 
   const profileUpdate = (name, photoUrl) => {
@@ -56,6 +64,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     signIn,
+    googleLogin,
     logOut,
     profileUpdate
   };

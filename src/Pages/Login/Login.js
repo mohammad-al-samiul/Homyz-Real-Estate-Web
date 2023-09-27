@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import authBgImage from '../../Assets/others/authentication.png';
 import authentication2 from '../../Assets/others/authentication2.png';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { AuthContext } from '../../Providers/AuthProvider';
 import './Login.css';
 const Login = () => {
@@ -107,6 +108,7 @@ const Login = () => {
               </Link>
               <p>Or sign in with</p>
             </div>
+            <SocialLogin />
           </div>
         </div>
       </div>

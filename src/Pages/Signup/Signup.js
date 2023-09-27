@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import authBgImage from '../../Assets/others/authentication.png';
 import authentication2 from '../../Assets/others/authentication2.png';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Signup = () => {
@@ -167,6 +168,7 @@ const Signup = () => {
                 />
               </div>
             </form>
+            <SocialLogin />
           </div>
         </div>
       </div>
