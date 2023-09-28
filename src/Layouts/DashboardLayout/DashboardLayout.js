@@ -11,9 +11,14 @@ import {
   FaWallet
 } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
+import useAdmin from '../../Pages/Hooks/useAdmin';
 
 const DashboardLayout = () => {
-  const isAdmin = true;
+  const [admin, isAdminLoading] = useAdmin();
+  if (isAdminLoading) {
+    return <div>loading...</div>;
+  }
+  const isAdmin = admin.result.admin;
 
   return (
     <div>
