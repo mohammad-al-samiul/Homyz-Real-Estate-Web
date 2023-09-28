@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useCart from '../../Hooks/useCart';
@@ -36,6 +37,9 @@ const MyCart = () => {
   };
   return (
     <div className="w-full p-10">
+      <Helmet>
+        <title>Regal Dragon | My Cart</title>
+      </Helmet>
       <div className="p-5 shadow-lg rounded-lg">
         <div className="text-2xl font bond flex justify-around">
           <h3>Total item : ${cart?.length}</h3>
