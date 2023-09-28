@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import axios from 'axios';
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -52,6 +53,21 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        axios
+          .post('http://localhost:5000/jwt', {
+            email: currentUser?.email
+          })
+          .then((data) => {
+            console.log(data.data.token);
+            const token = data.data.token;
+            if (token) {
+              localStorage.setItem('access-token', token);
+            }
+          });
+      } else {
+        localStorage.removeItem('access-token');
+      }
       setLoading(false);
     });
     return () => {
