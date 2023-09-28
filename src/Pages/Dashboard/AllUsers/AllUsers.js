@@ -14,19 +14,53 @@ const AllUsers = () => {
 
   const handleMakeAdmin = (user) => {
     console.log(user);
-    fetch(`http://localhost:5000/user/admin/${user?._id}`, {
-      method: 'PATCH'
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          Swal.fire('Good job!', `${user?.name}  is admin now!`, 'success');
-        }
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Make Admin!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/user/admin/${user?._id}`, {
+          method: 'PATCH'
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            if (data.modifiedCount) {
+              Swal.fire('Admin', `${user?.name} is admin now!.`, 'success');
+            }
+          });
+      }
+    });
   };
 
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDelete = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/user/delete/${user?._id}`, {
+          method: 'DELETE'
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              refetch();
+              Swal.fire('Deleted!', `${user?.name} has been deleted.`, 'success');
+            }
+          });
+      }
+    });
   };
   return (
     <div>
