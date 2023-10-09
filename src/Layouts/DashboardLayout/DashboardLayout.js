@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import {
   FaCalendarAlt,
   FaHamburger,
@@ -19,12 +18,10 @@ const DashboardLayout = () => {
     return <div>loading...</div>;
   }
   const isAdmin = admin.result.admin;
+  console.log(isAdmin);
 
   return (
     <div>
-      <Helmet>
-        <title>Regal Dragon | Dashboard</title>
-      </Helmet>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">

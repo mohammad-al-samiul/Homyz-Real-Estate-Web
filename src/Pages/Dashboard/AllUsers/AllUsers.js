@@ -7,9 +7,16 @@ import { FaUserShield } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
 
 const AllUsers = () => {
+  const token = localStorage.getItem('access-token');
   const { refetch, data: users = [] } = useQuery({
     queryKey: ['users'],
-    queryFn: () => fetch(`http://localhost:5000/users`).then((res) => res.json())
+
+    queryFn: () =>
+      fetch(`http://localhost:5000/users`, {
+        headers: {
+          authorization: `bearer ${token}`
+        }
+      }).then((res) => res.json())
   });
 
   const handleMakeAdmin = (user) => {

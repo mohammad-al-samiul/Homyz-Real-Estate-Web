@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import axios from 'axios';
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -54,13 +53,16 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        axios
-          .post('http://localhost:5000/jwt', {
-            email: currentUser?.email
-          })
+        fetch(`http://localhost:5000/jwt`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify({ email: currentUser?.email })
+        })
+          .then((res) => res.json())
           .then((data) => {
-            //console.log(data.data.token);
-            const token = data.data.token;
+            const token = data.token;
             if (token) {
               localStorage.setItem('access-token', token);
             }

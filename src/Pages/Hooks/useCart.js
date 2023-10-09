@@ -11,6 +11,7 @@ const useCart = () => {
     isLoading
   } = useQuery({
     queryKey: ['cart', user?.email],
+
     queryFn: async () => {
       const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
         headers: {
