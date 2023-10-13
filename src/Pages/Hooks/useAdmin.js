@@ -7,12 +7,14 @@ const useAdmin = () => {
   const { user } = useContext(AuthContext);
   const { data: admin, isLoading: isAdminLoading } = useQuery({
     queryKey: ['isAdmin', user?.email],
-    queryFn: () =>
-      fetch(`http://localhost:5000/user/admin/${user?.email}`, {
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/user/admin/${user?.email}`, {
         headers: {
           authorization: `bearer ${token}`
         }
-      }).then((res) => res.json())
+      });
+      return res.json();
+    }
   });
   return [admin, isAdminLoading];
 };

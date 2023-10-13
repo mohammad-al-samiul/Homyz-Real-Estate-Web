@@ -9,7 +9,7 @@ const AdminRoute = ({ children }) => {
   const location = useLocation();
   const [admin, isAdminLoading] = useAdmin();
   const isAdmin = admin.result.admin;
-  console.log(isAdmin);
+  // console.log(isAdmin);
 
   if (loading && isAdminLoading) {
     return <div>loading...</div>;

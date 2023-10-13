@@ -86,7 +86,7 @@ const Signup = () => {
               <h3 className="text-2xl font-bold text-center">Sign Up </h3>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text">Name</span>
                 </label>
                 <input
                   type="name"

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import {
   FaCalendarAlt,
@@ -17,8 +18,8 @@ const DashboardLayout = () => {
   if (isAdminLoading) {
     return <div>loading...</div>;
   }
+
   const isAdmin = admin.result.admin;
-  console.log(isAdmin);
 
   return (
     <div>
@@ -38,7 +39,7 @@ const DashboardLayout = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <NavLink to={'/dashboard/admin-home'}>
+                  <NavLink to={'dashboard/admin-home'}>
                     <FaHome></FaHome> <span className="mt-1">Admin Home</span>
                   </NavLink>
                 </li>

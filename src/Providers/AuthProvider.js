@@ -65,12 +65,12 @@ const AuthProvider = ({ children }) => {
             const token = data.token;
             if (token) {
               localStorage.setItem('access-token', token);
+              setLoading(false);
             }
           });
       } else {
         localStorage.removeItem('access-token');
       }
-      setLoading(false);
     });
     return () => {
       unsubscribe();
