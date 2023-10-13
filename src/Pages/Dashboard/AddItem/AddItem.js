@@ -2,17 +2,30 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
-
+const imgBB_token = process.env.REACT_APP_imgKey;
 const AddItem = () => {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm();
+  const imgbb_URL = `https://api.imgbb.com/1/upload?expiration=600&key=${imgBB_token}`;
   const onSubmit = (data) => {
-    console.log(data);
+    //console.log(data);
+    const formData = new FormData();
+    formData.append('image', data.itemFile[0]);
+    fetch(`${imgbb_URL}`, {
+      method: 'POST',
+      body: formData
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        console.log(imgData);
+      });
   };
   console.log(errors);
+  console.log(imgBB_token);
+
   return (
     <div className="">
       <div>
