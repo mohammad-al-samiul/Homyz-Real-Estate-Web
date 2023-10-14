@@ -77,7 +77,7 @@ const AllUsers = () => {
       <div className="lg:w-full p-10 ">
         <h3 className="text-2xl font-bold text-center">Total Users : {users?.length}</h3>
         <div className="my-4 overflow-x-auto shadow-lg rounded">
-          <table className="table">
+          <table className="table-xs lg:table">
             {/* head */}
             <thead>
               <tr>

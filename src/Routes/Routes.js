@@ -4,6 +4,7 @@ import Main from '../Layouts/Main/Main';
 import Contact from '../Pages/Contact/Contact';
 import AddItem from '../Pages/Dashboard/AddItem/AddItem';
 import AllUsers from '../Pages/Dashboard/AllUsers/AllUsers';
+import ManageItems from '../Pages/Dashboard/ManageItems/ManageItems';
 import MyCart from '../Pages/Dashboard/MyCart/MyCart';
 import Home from '../Pages/Home/Home/Home';
 import Login from '../Pages/Login/Login';
@@ -85,6 +86,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddItem />
+          </AdminRoute>
+        )
+      },
+      {
+        path: 'manage-item',
+        element: (
+          <AdminRoute>
+            <ManageItems />
           </AdminRoute>
         )
       }

@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 const imgBB_token = process.env.REACT_APP_imgKey;
 const AddItem = () => {
@@ -31,8 +32,29 @@ const AddItem = () => {
             recipeDetails,
             image: imgURL
           };
-          console.log(menuItem);
-          reset();
+          //console.log(menuItem);
+          fetch(`http://localhost:5000/menu`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              authorization: `bearer ${localStorage.getItem('access-token')}`
+            },
+            body: JSON.stringify(menuItem)
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Menu Item Added',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              }
+              //console.log(data);
+              reset();
+            });
         }
       });
   };
@@ -64,8 +86,11 @@ const AddItem = () => {
                 </label>
                 <select
                   {...register('category', { required: 'Category is required' })}
+                  defaultValue={'DEFAULT'}
                   className="select select-bordered">
-                  <option disabled>Pick one</option>
+                  <option value="DEFAULT" disabled>
+                    Pick one
+                  </option>
                   <option>Salad</option>
                   <option>Pizza</option>
                   <option>Soups</option>
