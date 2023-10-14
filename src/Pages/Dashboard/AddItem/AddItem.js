@@ -13,7 +13,7 @@ const AddItem = () => {
   } = useForm();
   const imgbb_URL = `https://api.imgbb.com/1/upload?key=${imgBB_token}`;
   const onSubmit = (data) => {
-    //console.log(data);
+    console.log(data);
     const formData = new FormData();
     formData.append('image', data.itemFile[0]);
     fetch(`${imgbb_URL}`, {

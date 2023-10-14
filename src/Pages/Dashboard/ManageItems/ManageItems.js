@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import useMenu from '../../Hooks/useMenu';
 
 const ManageItems = () => {
-  const [menu, menuLoading] = useMenu();
+  const [menu, menuLoading, refetch] = useMenu();
   if (menuLoading) {
     return <div>loading...</div>;
   }
@@ -12,7 +13,32 @@ const ManageItems = () => {
     console.log(item);
   };
   const handleDelete = (item) => {
-    console.log(item);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/menu/${item._id}`, {
+          method: 'DELETE'
+          //   headers: {
+          //     authorization: `bearer ${localStorage.getItem('access-token')}`
+          //   }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount) {
+              Swal.fire('Deleted!', 'Menu has been deleted.', 'success');
+              refetch();
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -51,14 +77,14 @@ const ManageItems = () => {
                 <td className="text-end">{item.price}</td>
                 <td>
                   <button
-                    onClick={() => handleUpdate(menu)}
+                    onClick={() => handleUpdate(item)}
                     className="btn hover:bg-orange-500 text-white bg-orange-400 rounded">
                     <FaEdit></FaEdit>
                   </button>
                 </td>
                 <td>
                   <button
-                    onClick={() => handleDelete(menu)}
+                    onClick={() => handleDelete(item)}
                     className="btn hover:bg-red-600 text-white bg-red-500 rounded">
                     <FaTrashAlt></FaTrashAlt>
                   </button>
