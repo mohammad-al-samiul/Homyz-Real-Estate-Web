@@ -113,7 +113,7 @@ const AllUsers = () => {
                   <td>
                     <button
                       onClick={() => handleDelete(user)}
-                      className="btn hover:bg-red-600 text-white bg-red-600 rounded">
+                      className="btn hover:bg-red-600 text-white bg-red-500 rounded">
                       <FaTrashAlt></FaTrashAlt>
                     </button>
                   </td>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import useMenu from '../../Hooks/useMenu';
 
 const ManageItems = () => {
@@ -6,6 +7,14 @@ const ManageItems = () => {
   if (menuLoading) {
     return <div>loading...</div>;
   }
+
+  const handleUpdate = (item) => {
+    console.log(item);
+  };
+  const handleDelete = (item) => {
+    console.log(item);
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -13,51 +22,47 @@ const ManageItems = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
+              <th>#</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            {menu.map((item) => (
+            {menu.map((item, index) => (
               <tr key={item._id}>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
+                <th>{index + 1}</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src="/tailwind-css-component-profile-2@56w.png"
-                          alt="Avatar Tailwind CSS Component"
-                        />
+                        <img src={item.image} />
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">Hart Hagerty</div>
-                      <div className="text-sm opacity-50">United States</div>
+                      <div className="font-bold">{item.name}</div>
                     </div>
                   </div>
                 </td>
+                <td>{item.category}</td>
+                <td className="text-end">{item.price}</td>
                 <td>
-                  Zemlak, Daniel and Leannon
-                  <br />
-                  <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                  <button
+                    onClick={() => handleUpdate(menu)}
+                    className="btn hover:bg-orange-500 text-white bg-orange-400 rounded">
+                    <FaEdit></FaEdit>
+                  </button>
                 </td>
-                <td>Purple</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+                <td>
+                  <button
+                    onClick={() => handleDelete(menu)}
+                    className="btn hover:bg-red-600 text-white bg-red-500 rounded">
+                    <FaTrashAlt></FaTrashAlt>
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
