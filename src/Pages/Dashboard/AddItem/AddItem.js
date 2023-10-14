@@ -7,9 +7,10 @@ const AddItem = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm();
-  const imgbb_URL = `https://api.imgbb.com/1/upload?expiration=600&key=${imgBB_token}`;
+  const imgbb_URL = `https://api.imgbb.com/1/upload?key=${imgBB_token}`;
   const onSubmit = (data) => {
     //console.log(data);
     const formData = new FormData();
@@ -20,11 +21,23 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((imgData) => {
-        console.log(imgData);
+        if (imgData.success) {
+          const imgURL = imgData.data.display_url;
+          const { recipeName, category, price, recipeDetails } = data;
+          const menuItem = {
+            recipeName,
+            category,
+            price: parseFloat(price),
+            recipeDetails,
+            image: imgURL
+          };
+          console.log(menuItem);
+          reset();
+        }
       });
   };
-  console.log(errors);
-  console.log(imgBB_token);
+  //console.log(errors);
+  //console.log(imgBB_token);
 
   return (
     <div className="">
