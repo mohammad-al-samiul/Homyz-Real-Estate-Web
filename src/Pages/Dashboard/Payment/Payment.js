@@ -6,7 +6,6 @@ import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import CheckoutForm from './CheckoutForm';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PB);
-console.log(process.env.REACT_APP_STRIPE_PB);
 
 const Payment = () => {
   return (
