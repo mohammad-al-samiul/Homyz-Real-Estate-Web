@@ -6,6 +6,7 @@ import AddItem from '../Pages/Dashboard/AddItem/AddItem';
 import AllUsers from '../Pages/Dashboard/AllUsers/AllUsers';
 import ManageItems from '../Pages/Dashboard/ManageItems/ManageItems';
 import MyCart from '../Pages/Dashboard/MyCart/MyCart';
+import Payment from '../Pages/Dashboard/Payment/Payment';
 import Home from '../Pages/Home/Home/Home';
 import Login from '../Pages/Login/Login';
 import Menu from '../Pages/Menu/Menu';
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: 'my-cart',
         element: <MyCart />
+      },
+      {
+        path: 'payment',
+        element: <Payment />
       },
 
       {

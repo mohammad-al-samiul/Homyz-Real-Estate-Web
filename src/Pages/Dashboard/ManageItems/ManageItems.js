@@ -2,6 +2,7 @@ import React from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useMenu from '../../Hooks/useMenu';
+import './ManageItems.css';
 
 const ManageItems = () => {
   const [menu, menuLoading, refetch] = useMenu();
@@ -24,15 +25,15 @@ const ManageItems = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/menu/${item._id}`, {
-          method: 'DELETE'
-          //   headers: {
-          //     authorization: `bearer ${localStorage.getItem('access-token')}`
-          //   }
+          method: 'DELETE',
+          headers: {
+            authorization: `bearer ${localStorage.getItem('access-token')}`
+          }
         })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.deletedCount) {
+            if (data.deletedCount > 0) {
               Swal.fire('Deleted!', 'Menu has been deleted.', 'success');
               refetch();
             }

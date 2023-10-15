@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useCart from '../../Hooks/useCart';
 
@@ -44,7 +45,10 @@ const MyCart = () => {
         <div className="text-2xl font bond flex justify-around">
           <h3>Total item : ${cart?.length}</h3>
           <h3>Total price : ${total}</h3>
-          <button className="btn btn-sm bg-orange-400 hover:bg-orange-400 text-white">Pay</button>
+          <Link to={'/dashboard/payment'}>
+            {' '}
+            <button className="btn  bg-orange-400 hover:bg-orange-400 text-white">Pay</button>
+          </Link>
         </div>
         <div className="overflow-x-auto">
           <table className="table">
@@ -78,7 +82,7 @@ const MyCart = () => {
                   <th>
                     <button
                       onClick={() => handleDelete(item)}
-                      className="btn  btn-xs rounded-lg bg-red-600 text-white hover:bg-red-600 hover:text-white">
+                      className="btn hover:bg-red-600 text-white bg-red-500 rounded">
                       <FaTrashAlt></FaTrashAlt>
                     </button>
                   </th>
