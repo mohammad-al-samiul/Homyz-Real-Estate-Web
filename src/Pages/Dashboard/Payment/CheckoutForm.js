@@ -2,9 +2,11 @@
 /* eslint-disable no-unused-vars */
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import './CheckoutForm.css';
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, cart }) => {
   const { user } = useContext(AuthContext);
   const [cardError, setCardError] = useState('');
   const [clientSecret, setClientSecret] = useState('');
@@ -13,9 +15,9 @@ const CheckoutForm = ({ price }) => {
   //console.log(clientSecret);
   const stripe = useStripe();
   const elements = useElements();
-
+  //console.log(price);
   useEffect(() => {
-    fetch('http://localhost:5000/create-payment-intent', {
+    fetch(`http://localhost:5000/create-payment-intent`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +52,7 @@ const CheckoutForm = ({ price }) => {
       console.log('[error]', error);
     } else {
       setCardError('');
-      // console.log('[PaymentMethod]', paymentMethod);
+      //console.log('[PaymentMethod]', paymentMethod);
     }
 
     setProcessing(true);
@@ -67,11 +69,34 @@ const CheckoutForm = ({ price }) => {
       console.log(confirmError);
     }
     setProcessing(false);
+    //console.log(paymentIntent);
 
-    if (paymentIntent === 'succeeded') {
+    if (paymentIntent.status === 'succeeded') {
       setTransactionId(paymentIntent.id);
+      //console.log(transactionId);
+      const payment = {
+        email: user?.email,
+        transactionId: paymentIntent.id,
+        price: price,
+        quantity: cart?.length,
+        items: cart?.map((item) => item._id),
+        itemsName: cart?.map((item) => item.name)
+      };
+      fetch(`http://localhost:5000/payments`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          authorization: `bearer ${localStorage.getItem('access-token')}`
+        },
+        body: JSON.stringify(payment)
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire('Payment Successfull!', `Your transactionId is ${transactionId}`, 'success');
+          }
+        });
     }
-    // console.log(paymentIntent);
   };
 
   return (
@@ -100,6 +125,7 @@ const CheckoutForm = ({ price }) => {
           Pay
         </button>
       </form>
+      <br />
       {cardError && <p className="text-red-600">{cardError}</p>}
       {transactionId && (
         <p className="text-green-500">Success Payment with Transaction Id : {transactionId}</p>
