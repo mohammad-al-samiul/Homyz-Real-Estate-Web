@@ -17,16 +17,21 @@ const CheckoutForm = ({ price, cart }) => {
   const elements = useElements();
   //console.log(price);
   useEffect(() => {
-    fetch(`http://localhost:5000/create-payment-intent`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `bearer ${localStorage.getItem('access-token')}`
-      },
-      body: JSON.stringify({ price })
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
+    if (price > 0) {
+      fetch(`http://localhost:5000/create-payment-intent`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: `bearer ${localStorage.getItem('access-token')}`
+        },
+        body: JSON.stringify({ price })
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          setClientSecret(data.clientSecret);
+        });
+    }
   }, [price]);
 
   const handleSubmit = async (event) => {
@@ -79,9 +84,12 @@ const CheckoutForm = ({ price, cart }) => {
         transactionId: paymentIntent.id,
         price: price,
         quantity: cart?.length,
-        items: cart?.map((item) => item._id),
+        cartItems: cart?.map((item) => item._id),
+        menuItems: cart?.map((item) => item.menuItems),
+        paymentStatus: 'pending',
         itemsName: cart?.map((item) => item.name)
       };
+
       fetch(`http://localhost:5000/payments`, {
         method: 'POST',
         headers: {
@@ -92,15 +100,17 @@ const CheckoutForm = ({ price, cart }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.insertedId) {
+          // console.log(data);
+          if (data.insertedResult.insertedId) {
             Swal.fire('Payment Successfull!', `Your transactionId is ${transactionId}`, 'success');
           }
-        });
+        })
+        .catch((err) => console.log(err.message));
     }
   };
 
   return (
-    <div className="px-20 grid grid-cols-2">
+    <div className="w-full">
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
