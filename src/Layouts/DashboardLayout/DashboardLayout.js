@@ -18,8 +18,7 @@ const DashboardLayout = () => {
   if (isAdminLoading) {
     return <div>loading...</div>;
   }
-
-  const isAdmin = admin.result.admin;
+  const isAdmin = admin.admin;
 
   return (
     <div>
@@ -39,7 +38,7 @@ const DashboardLayout = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <NavLink to={'dashboard/admin-home'}>
+                  <NavLink to={'admin-home'}>
                     <FaHome></FaHome> <span className="mt-1">Admin Home</span>
                   </NavLink>
                 </li>
@@ -62,7 +61,7 @@ const DashboardLayout = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to={'/user-home'}>
+                  <NavLink to={'/dashboard/user-home'}>
                     <FaHome></FaHome> <span className="mt-1">User Home</span>
                   </NavLink>
                 </li>

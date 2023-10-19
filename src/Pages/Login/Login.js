@@ -35,10 +35,10 @@ const Login = () => {
     const form = e.target;
     const name = form.email.value;
     const password = form.password.value;
-    console.log({ name, password });
+    // console.log({ name, password });
     signIn(name, password)
       .then((result) => {
-        console.log(result.user);
+        //   console.log(result.user);
         toast.success('User login successfully');
         navigate(from, { replace: true });
       })

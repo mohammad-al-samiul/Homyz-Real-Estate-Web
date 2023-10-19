@@ -3,10 +3,12 @@ import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
 import Main from '../Layouts/Main/Main';
 import Contact from '../Pages/Contact/Contact';
 import AddItem from '../Pages/Dashboard/AddItem/AddItem';
+import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome';
 import AllUsers from '../Pages/Dashboard/AllUsers/AllUsers';
 import ManageItems from '../Pages/Dashboard/ManageItems/ManageItems';
 import MyCart from '../Pages/Dashboard/MyCart/MyCart';
 import Payment from '../Pages/Dashboard/Payment/Payment';
+import UserHome from '../Pages/Dashboard/UserHome/UserHome';
 import Home from '../Pages/Home/Home/Home';
 import Login from '../Pages/Login/Login';
 import Menu from '../Pages/Menu/Menu';
@@ -69,6 +71,18 @@ export const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      {
+        path: 'user-home',
+        element: <UserHome />
+      },
+      {
+        path: 'admin-home',
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        )
+      },
       {
         path: 'my-cart',
         element: <MyCart />

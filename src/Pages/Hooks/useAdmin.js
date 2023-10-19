@@ -4,9 +4,10 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const useAdmin = () => {
   const token = localStorage.getItem('access-token');
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const { data: admin, isLoading: isAdminLoading } = useQuery({
     queryKey: ['isAdmin', user?.email],
+    enabled: !loading,
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/user/admin/${user?.email}`, {
         headers: {
