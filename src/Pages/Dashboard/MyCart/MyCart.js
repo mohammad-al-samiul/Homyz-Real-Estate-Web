@@ -10,6 +10,13 @@ const MyCart = () => {
   // console.log(cart);
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
+  if (cart?.length === 0) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <p className="font-bold text-orange-400  text-3xl">Please go ahead and place your order.</p>
+      </div>
+    );
+  }
   const handleDelete = (item) => {
     // console.log(item);
     Swal.fire({
@@ -45,14 +52,10 @@ const MyCart = () => {
         <div className="text-2xl font bond flex justify-around">
           <h3>Total item : ${cart?.length}</h3>
           <h3>Total price : ${total}</h3>
-          <button disabled={total === 0}>
-            <Link
-              to={'/dashboard/payment'}
-              className={` btn  bg-orange-400 hover:bg-orange-400 text-white `}>
-              {' '}
-              Pay
-            </Link>
-          </button>
+          <Link to={'/dashboard/payment'}>
+            {' '}
+            <button className={` btn  bg-orange-400 hover:bg-orange-400 text-white `}>pay</button>
+          </Link>
         </div>
         <div className="overflow-x-auto">
           <table className="table">
