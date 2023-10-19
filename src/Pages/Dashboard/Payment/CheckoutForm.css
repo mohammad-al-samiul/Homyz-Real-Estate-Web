@@ -1,22 +1,9 @@
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-body,
-html {
-  background-color: #f6f9fc;
-  font-size: 18px;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
-form {
+.checkout-component form {
   max-width: 800px;
   margin: 80px auto;
 }
 
-label {
+.checkout-component label {
   color: #6b7c93;
   font-weight: 300;
   letter-spacing: 0.025em;
@@ -24,7 +11,7 @@ label {
   display: block;
 }
 
-button {
+.checkout-component button {
   white-space: nowrap;
   border: 0;
   outline: 0;
@@ -46,7 +33,7 @@ button {
   margin-top: 10px;
 }
 
-button:hover {
+.checkout-component button:hover {
   color: #fff;
   cursor: pointer;
   background-color: #7795f8;
@@ -54,11 +41,11 @@ button:hover {
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
-button[disabled] {
+.checkout-component button[disabled] {
   opacity: 0.6;
 }
 
-input,
+.checkout-component input,
 select {
   display: block;
   border: none;
@@ -74,7 +61,7 @@ select {
   width: 500px;
 }
 
-input::placeholder {
+.checkout-component input::placeholder {
   color: #aab7c4;
 }
 
@@ -99,7 +86,7 @@ The StripeElement class is applied to the Element container by default.
 More info: https://stripe.com/docs/stripe-js/reference#element-options
 */
 
-.StripeElement,
+.checkout-component .StripeElement,
 .StripeElementIdeal,
 .StripeElementP24,
 .StripeElementEPS,
@@ -113,7 +100,7 @@ More info: https://stripe.com/docs/stripe-js/reference#element-options
   background: white;
 }
 
-.StripeElement--focus,
+.checkout-component .StripeElement--focus,
 .StripeElementIdeal--focus,
 .StripeElementP24--focus,
 .StripeElementEPS--focus,
@@ -123,13 +110,13 @@ More info: https://stripe.com/docs/stripe-js/reference#element-options
   transition: all 150ms ease;
 }
 
-.StripeElement.loading {
+.checkout-component .StripeElement.loading {
   height: 41.6px;
   opacity: 0.6;
   margin: auto;
 }
 
-.StripeElementIdeal,
+.checkout-component .StripeElementIdeal,
 .StripeElementP24,
 .StripeElementEPS,
 .StripeElementFpx {

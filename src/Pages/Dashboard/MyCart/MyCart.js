@@ -45,10 +45,14 @@ const MyCart = () => {
         <div className="text-2xl font bond flex justify-around">
           <h3>Total item : ${cart?.length}</h3>
           <h3>Total price : ${total}</h3>
-          <Link to={'/dashboard/payment'}>
-            {' '}
-            <button className="btn  bg-orange-400 hover:bg-orange-400 text-white">Pay</button>
-          </Link>
+          <button disabled={total === 0}>
+            <Link
+              to={'/dashboard/payment'}
+              className={` btn  bg-orange-400 hover:bg-orange-400 text-white `}>
+              {' '}
+              Pay
+            </Link>
+          </button>
         </div>
         <div className="overflow-x-auto">
           <table className="table">

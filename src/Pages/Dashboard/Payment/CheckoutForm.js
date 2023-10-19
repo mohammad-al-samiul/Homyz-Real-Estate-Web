@@ -85,7 +85,7 @@ const CheckoutForm = ({ price, cart }) => {
         price: price,
         quantity: cart?.length,
         cartItems: cart?.map((item) => item._id),
-        menuItems: cart?.map((item) => item.menuItems),
+        menuItems: cart?.map((item) => item.menuItemId),
         paymentStatus: 'pending',
         itemsName: cart?.map((item) => item.name)
       };
@@ -110,7 +110,7 @@ const CheckoutForm = ({ price, cart }) => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full checkout-component">
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
