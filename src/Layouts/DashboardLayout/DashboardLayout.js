@@ -84,14 +84,15 @@ const DashboardLayout = () => {
                     <FaCalendarAlt></FaCalendarAlt> <span className="mt-1">Reservation</span>
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to={'/payment'}>
-                    <FaWallet></FaWallet> <span className="mt-1">Payment History</span>
-                  </NavLink>
-                </li>
+
                 <li>
                   <NavLink to={'/dashboard/my-cart'}>
                     <FaShoppingCart></FaShoppingCart> <span className="mt-1"> My Cart</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={'/dashboard/payemnt-history'}>
+                    <FaWallet></FaWallet> <span className="mt-1">Payment History</span>
                   </NavLink>
                 </li>
               </>
@@ -109,7 +110,7 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={'/home'}>
+              <NavLink to={'/order'}>
                 <FaShopify></FaShopify> <span className="mt-1"> Order Food</span>
               </NavLink>
             </li>

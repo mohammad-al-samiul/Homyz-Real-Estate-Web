@@ -12,10 +12,13 @@ import useMenu from '../../Hooks/useMenu';
 const Order = () => {
   const categories = ['salad', 'pizza', 'soup', 'desserts', 'drinks'];
   const { category } = useParams();
-  //   console.log(category);
+
   const initialIndex = categories.indexOf(category);
 
+  // console.log('ini', initialIndex);
+
   const [tabIndex, setTabIndex] = useState(initialIndex);
+  //console.log(tabIndex);
 
   const [menu] = useMenu();
 
@@ -31,7 +34,9 @@ const Order = () => {
       </Helmet>
       <Cover menuImage={coverImage} title={`Order Food`} />
       <div className="mt-10 text-center">
-        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+        <Tabs
+          defaultIndex={tabIndex === -1 ? 0 : tabIndex}
+          onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>SALAD</Tab>
             <Tab>PIZZA</Tab>

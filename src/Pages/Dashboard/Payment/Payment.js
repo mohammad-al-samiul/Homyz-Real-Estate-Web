@@ -17,8 +17,8 @@ const Payment = () => {
   return (
     <div>
       <SectionTitle heading={`Payment`} subHeading={`Please Process`}></SectionTitle>
-      <h1>This is Payment</h1>
-      <div className="payment-component">
+      <h1 className="text-2xl font-bold text-center">Total : ${total.toFixed(2)}</h1>
+      <div className="payment-component mx-5">
         <Elements stripe={stripePromise}>
           <CheckoutForm price={price} cart={cart} />
         </Elements>

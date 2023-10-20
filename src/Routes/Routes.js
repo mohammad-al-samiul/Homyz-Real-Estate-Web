@@ -8,6 +8,7 @@ import AllUsers from '../Pages/Dashboard/AllUsers/AllUsers';
 import ManageItems from '../Pages/Dashboard/ManageItems/ManageItems';
 import MyCart from '../Pages/Dashboard/MyCart/MyCart';
 import Payment from '../Pages/Dashboard/Payment/Payment';
+import PaymentHistory from '../Pages/Dashboard/PaymentHistory/PaymentHistory';
 import UserHome from '../Pages/Dashboard/UserHome/UserHome';
 import Home from '../Pages/Home/Home/Home';
 import Login from '../Pages/Login/Login';
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       },
+      {
+        path: '/order',
+        element: <Order />
+      },
 
       {
         path: '/order/:category',
@@ -74,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: 'user-home',
         element: <UserHome />
+      },
+      {
+        path: 'payemnt-history',
+        element: <PaymentHistory />
       },
       {
         path: 'admin-home',

@@ -49,16 +49,16 @@ const MyCart = () => {
         <title>Regal Dragon | My Cart</title>
       </Helmet>
       <div className="p-5 shadow-lg rounded-lg">
-        <div className="text-2xl font bond flex justify-around">
+        <div className="text-2xl font-bold lg:flex justify-around">
           <h3>Total item : ${cart?.length}</h3>
-          <h3>Total price : ${total}</h3>
+          <h3>Total price : ${total.toFixed(2)}</h3>
           <Link to={'/dashboard/payment'}>
             {' '}
             <button className={` btn  bg-orange-400 hover:bg-orange-400 text-white `}>pay</button>
           </Link>
         </div>
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table-xs lg:table">
             {/* head */}
             <thead>
               <tr>

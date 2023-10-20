@@ -77,11 +77,11 @@ const AllUsers = () => {
       <div className="lg:w-full lg:p-10 ">
         <h3 className="text-2xl font-bold text-center">Total Users : {users?.length}</h3>
         <div className="my-4 overflow-x-auto shadow-lg rounded lg:p-10 ">
-          <table className=" table">
+          <table className=" table w-full">
             {/* head */}
             <thead>
               <tr>
-                <th></th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -91,11 +91,10 @@ const AllUsers = () => {
             <tbody>
               {users?.map((user, index) => (
                 <tr key={user._id} className="hover">
-                  <th>{index + 1}</th>
-                  <td>{user?.name}</td>
+                  <td>{index + 1}</td>
+                  <td className="lg:w-2/12 ">{user?.name}</td>
                   <td>{user?.email}</td>
                   <td>
-                    {' '}
                     {user?.role == 'admin' ? (
                       'admin'
                     ) : (

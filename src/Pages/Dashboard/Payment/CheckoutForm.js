@@ -12,10 +12,10 @@ const CheckoutForm = ({ price, cart }) => {
   const [clientSecret, setClientSecret] = useState('');
   const [transactionId, setTransactionId] = useState('');
   const [processing, setProcessing] = useState(false);
-  //console.log(clientSecret);
+
   const stripe = useStripe();
   const elements = useElements();
-  //console.log(price);
+
   useEffect(() => {
     if (price > 0) {
       fetch(`http://localhost:5000/create-payment-intent`, {
@@ -28,7 +28,6 @@ const CheckoutForm = ({ price, cart }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data);
           setClientSecret(data.clientSecret);
         });
     }
@@ -134,12 +133,15 @@ const CheckoutForm = ({ price, cart }) => {
           disabled={!stripe || !clientSecret || processing}>
           Pay
         </button>
+        <br />
+        {cardError && <p className="mt-2 text-red-600">{cardError}</p>}
+        {transactionId && (
+          <p className="mt-2 text-green-500">
+            Success Payment with Transaction Id :{' '}
+            <span className="font-bold"> {transactionId}</span>
+          </p>
+        )}
       </form>
-      <br />
-      {cardError && <p className="text-red-600">{cardError}</p>}
-      {transactionId && (
-        <p className="text-green-500">Success Payment with Transaction Id : {transactionId}</p>
-      )}
     </div>
   );
 };
