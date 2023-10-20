@@ -35,11 +35,11 @@ const AdminHome = () => {
       <div className="flex justify-center ">
         <Stats adminStats={adminStats} />
       </div>
-      <div className="mt-10">
-        <div>
+      <div className="mt-10 flex">
+        <div className="w-1/2">
           <BarCharts orderStats={orderStats} />
         </div>
-        <div>
+        <div className="w-1/2">
           <PieCharts orderStats={orderStats} />
         </div>
       </div>

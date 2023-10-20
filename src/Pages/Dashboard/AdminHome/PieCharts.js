@@ -4,8 +4,9 @@ import React from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
 const PieCharts = ({ orderStats }) => {
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-  console.log(orderStats);
+  //console.log(orderStats);
+
+  const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
@@ -25,7 +26,7 @@ const PieCharts = ({ orderStats }) => {
     );
   };
   return (
-    <div>
+    <>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Pie
@@ -37,13 +38,13 @@ const PieCharts = ({ orderStats }) => {
             outerRadius={80}
             fill="#8884d8"
             dataKey="quantity">
-            {orderStats.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            {orderStats?.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </div>
+    </>
   );
 };
 

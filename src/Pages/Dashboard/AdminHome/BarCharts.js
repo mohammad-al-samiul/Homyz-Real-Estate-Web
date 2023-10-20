@@ -19,7 +19,7 @@ const BarCharts = ({ orderStats }) => {
 
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
   };
-  //console.log(orderStats);
+
   return (
     <div>
       <BarChart
