@@ -30,16 +30,16 @@ const AdminHome = () => {
   });
   //console.log(adminStats);
   return (
-    <div className="mt-5">
-      <h1 className="ml-8 text-3xl font-bold mb-5">Hi, Welcome Back!</h1>
-      <div className="flex justify-center ">
+    <div className="">
+      <h1 className="lg:ml-8 text-3xl font-bold mb-5 text-center mt-10">Hi, Welcome Back!</h1>
+      <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-5 items-center">
         <Stats adminStats={adminStats} />
       </div>
-      <div className="mt-10 flex">
+      <div className="mt-10 lg:flex">
         <div className="w-1/2">
           <BarCharts orderStats={orderStats} />
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <PieCharts orderStats={orderStats} />
         </div>
       </div>

@@ -39,12 +39,12 @@ const Stats = ({ adminStats }) => {
   ];
 
   return (
-    <div>
+    <>
       {data &&
         data?.map((item) => (
-          <div key={item._id} className={`stats ${item.background} ml-3`}>
-            <div className="">
-              <div className="flex items-center justify-center h-32">
+          <div key={item._id} className={` ${item.background} rounded-xl mx-5 p-10`}>
+            <div>
+              <div className="flex items-center justify-center ">
                 <img src={item.icon} alt="" />
                 <div className="ml-3">
                   <p className="text-white font-bold text-2xl text-center">{item.total}</p>
@@ -54,7 +54,7 @@ const Stats = ({ adminStats }) => {
             </div>
           </div>
         ))}
-    </div>
+    </>
   );
 };
 
