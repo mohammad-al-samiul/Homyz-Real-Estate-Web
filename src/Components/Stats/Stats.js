@@ -38,7 +38,6 @@ const Stats = ({ adminStats }) => {
     }
   ];
 
-  console.log(data);
   return (
     <div>
       {data &&
