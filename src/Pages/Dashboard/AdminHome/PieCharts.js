@@ -5,6 +5,9 @@ import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
 const PieCharts = ({ orderStats }) => {
   //console.log(orderStats);
+  if (!orderStats) {
+    return;
+  }
 
   const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 

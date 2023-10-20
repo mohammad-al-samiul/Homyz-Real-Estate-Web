@@ -31,11 +31,11 @@ const AdminHome = () => {
   //console.log(adminStats);
   return (
     <div className="">
-      <h1 className="lg:ml-8 text-3xl font-bold mb-5 text-center mt-10">Hi, Welcome Back!</h1>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-5 items-center">
+      <h1 className="lg:ml-8 text-3xl font-bold mb-5 text-center mt-5">Hi, Welcome Back!</h1>
+      <div className="mx-5 grid grid-cols-1 lg:grid-cols-3 gap-5">
         <Stats adminStats={adminStats} />
       </div>
-      <div className="mt-10 lg:flex">
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-2  justify-center">
         <div className="w-1/2">
           <BarCharts orderStats={orderStats} />
         </div>

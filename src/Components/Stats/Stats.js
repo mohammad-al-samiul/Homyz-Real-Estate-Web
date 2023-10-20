@@ -42,15 +42,13 @@ const Stats = ({ adminStats }) => {
     <>
       {data &&
         data?.map((item) => (
-          <div key={item._id} className={` ${item.background} rounded-xl mx-5 p-10`}>
+          <div
+            key={item._id}
+            className={`${item.background} w-full flex justify-center items-center rounded-xl stat`}>
+            <img src={item.icon} alt="" />
             <div>
-              <div className="flex items-center justify-center ">
-                <img src={item.icon} alt="" />
-                <div className="ml-3">
-                  <p className="text-white font-bold text-2xl text-center">{item.total}</p>
-                  <p className="text-white font-bold text-2xl">{item.name}</p>
-                </div>
-              </div>
+              <div className="stat-title text-2xl text-white font-bold">{item.name}</div>
+              <div className="stat-value text-3xl text-white font-bold">{item.total}</div>
             </div>
           </div>
         ))}

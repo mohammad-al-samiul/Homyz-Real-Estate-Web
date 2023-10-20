@@ -65,9 +65,9 @@ const AddItem = () => {
     <div className="">
       <div>
         <SectionTitle subHeading={`What's New ?`} heading={`Add an Item`}></SectionTitle>
-        <div className="mx-5 bg-[#F3F3F3] p-10 rounded-lg">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full ">
+        <div className=" bg-[#F3F3F3] p-5 lg:p-10 rounded-lg w-80 lg:w-full mx-auto justify-center">
+          <form className="" onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control lg:w-full ">
               <label className="label">
                 <span className="label-text font-bold">Recipe Name</span>
               </label>
@@ -75,11 +75,11 @@ const AddItem = () => {
                 {...register('recipeName', { required: 'Recipe Name is required' })}
                 type="text"
                 placeholder="Recipe Name"
-                className="input input-bordered w-full "
+                className="input input-bordered lg:w-full "
               />
             </div>
             {errors.recipeName && <p className="text-red-600">{errors.recipeName.message}</p>}
-            <div className="flex">
+            <div className="lg:flex">
               <div className="form-control w-full mr-2">
                 <label className="label">
                   <span className="label-text font-bold">Category</span>
@@ -100,7 +100,7 @@ const AddItem = () => {
               </div>
               {errors.category && <p className="text-red-600">{errors.category.message}</p>}
 
-              <div className="form-control w-full ">
+              <div className="form-control lg:w-full ">
                 <label className="label">
                   <span className="label-text font-bold">Price</span>
                 </label>
@@ -108,7 +108,7 @@ const AddItem = () => {
                   {...register('price', { required: 'Price is required' })}
                   type="text"
                   placeholder="Price"
-                  className="input input-bordered w-full"
+                  className="input input-bordered lg:w-full"
                 />
                 {errors.price && <p className="text-red-600">{errors.price.message}</p>}
               </div>
@@ -125,14 +125,14 @@ const AddItem = () => {
                 placeholder="Recipe Details"></textarea>
             </div>
             {errors.recipeDetails && <p className="text-red-600">{errors.recipeDetails.message}</p>}
-            <div className="form-control w-full max-w-xs mt-3">
+            <div className="form-control lg:w-full  mt-3">
               <label className="label">
                 <span className="label-text font-bold">Item Image</span>
               </label>
               <input
                 {...register('itemFile', { required: 'Item Image is required' })}
                 type="file"
-                className="file-input w-full max-w-xs"
+                className="file-input lg:w-full "
               />
             </div>
             {errors.itemFile && <p className="text-red-600">{errors.itemFile.message}</p>}

@@ -23,7 +23,7 @@ const BarCharts = ({ orderStats }) => {
   return (
     <div>
       <BarChart
-        width={500}
+        width={380}
         height={300}
         data={orderStats}
         margin={{
