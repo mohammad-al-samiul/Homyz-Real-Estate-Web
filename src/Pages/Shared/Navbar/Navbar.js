@@ -71,7 +71,7 @@ const Navbar = () => {
               <li
                 onClick={handleToggle}
                 className="hover:bg-white hover:font-bold hover:rounded-lg">
-                <NavLink to={'dashboard/user-home'} style={navLinkStyles}>
+                <NavLink to={'dashboard/my-cart'} style={navLinkStyles}>
                   Dashboard
                 </NavLink>
               </li>

@@ -9,17 +9,17 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const FoodCard = ({ item }) => {
   const { name, recipe, image, price, _id } = item;
-
+  //console.log(_id);
   const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
 
   const { user } = useContext(AuthContext);
   const handleAddProduct = (item) => {
-    //  console.log(item);
+    //console.log('item Id : ', item._id);
     if (user && user?.email) {
-      const OrderItem = { menuItemId: _id, name, image, price, email: user?.email };
-      //  console.log(OrderItem);
+      const OrderItem = { menuItemId: item?._id, name, image, price, email: user?.email };
+      console.log(OrderItem);
       fetch(`http://localhost:5000/carts`, {
         method: 'POST',
         headers: {

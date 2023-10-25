@@ -20,18 +20,19 @@ const PaymentHistory = () => {
   if (isLoading) {
     return;
   }
+
   const { menu } = paymentData;
-  console.log(menu);
-  const total = menu.reduce((sum, item) => sum + item.price, 0);
-  //console.log(total);
+
+  const total = menu.reduce((sum, item) => sum + item.price * item.count, 0);
+
   return (
     <div>
       <Helmet>
         <title>Regal Dragon | Payment History</title>
       </Helmet>
       <div className="p-5 shadow-lg rounded-lg">
-        <div className="text-2xl font-bold lg:flex justify-around">
-          <h3>Total item : ${menu?.length}</h3>
+        <div className="text-2xl font-bold lg:flex justify-around  mb-10">
+          <h3>Total item : {menu?.length}</h3>
           <h3>Total price : ${total.toFixed(2)}</h3>
         </div>
         <div className="overflow-x-auto">
@@ -42,6 +43,7 @@ const PaymentHistory = () => {
                 <th>#</th>
                 <th>Item Image</th>
                 <th>Item Name</th>
+                <th>Quantity</th>
                 <th>Price</th>
 
                 <th>Action</th>
@@ -61,9 +63,13 @@ const PaymentHistory = () => {
                     </div>
                   </td>
                   <th>{item.name}</th>
+                  <th>{item.count}</th>
                   <th>{item.price}</th>
 
-                  <th></th>
+                  <th>
+                    {' '}
+                    <button className="btn btn-sm btn-success text-white">Paid</button>
+                  </th>
                 </tr>
               ))}
             </tbody>

@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import {
-  FaCalendarAlt,
   FaHamburger,
   FaHome,
   FaShopify,
@@ -75,23 +74,12 @@ const DashboardLayout = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to={'/dashboard/user-home'}>
-                    <FaHome></FaHome> <span className="mt-1">User Home</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to={'/reservation'}>
-                    <FaCalendarAlt></FaCalendarAlt> <span className="mt-1">Reservation</span>
-                  </NavLink>
-                </li>
-
-                <li>
                   <NavLink to={'/dashboard/my-cart'}>
                     <FaShoppingCart></FaShoppingCart> <span className="mt-1"> My Cart</span>
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={'/dashboard/payemnt-history'}>
+                  <NavLink to={'/dashboard/payment-history'}>
                     <FaWallet></FaWallet> <span className="mt-1">Payment History</span>
                   </NavLink>
                 </li>

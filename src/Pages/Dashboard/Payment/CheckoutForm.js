@@ -7,6 +7,7 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import './CheckoutForm.css';
 
 const CheckoutForm = ({ price, cart }) => {
+  //console.log(cart);
   const { user } = useContext(AuthContext);
   const [cardError, setCardError] = useState('');
   const [clientSecret, setClientSecret] = useState('');
@@ -101,7 +102,7 @@ const CheckoutForm = ({ price, cart }) => {
         .then((data) => {
           // console.log(data);
           if (data.insertedResult.insertedId) {
-            Swal.fire('Payment Successfull!', `Your transactionId is ${transactionId}`, 'success');
+            Swal.fire('Payment Successfull!', ``, 'success');
           }
         })
         .catch((err) => console.log(err.message));

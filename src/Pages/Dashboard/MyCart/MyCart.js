@@ -52,7 +52,7 @@ const MyCart = () => {
       </Helmet>
       <div className="p-5 shadow-lg rounded-lg">
         <div className="text-2xl font-bold lg:flex justify-around">
-          <h3>Total item : ${cart?.length}</h3>
+          <h3>Total item : {cart?.length}</h3>
           <h3>Total price : ${total.toFixed(2)}</h3>
           <Link to={'/dashboard/payment'}>
             {' '}
