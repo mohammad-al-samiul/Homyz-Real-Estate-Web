@@ -1,16 +1,34 @@
-import React from 'react';
+import emailjs from '@emailjs/browser';
+import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_rf0t8tt', 'template_tqfxo2a', form.current, 'PmFGs7THjokSk6B8n').then(
+      (result) => {
+        if (result.text === 'OK') {
+          Swal.fire('Good job!', 'Email Sent Successfully', 'success');
+        }
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+  };
   return (
     <div>
       <Helmet>
         <title>Regal Dragon | Contact</title>
       </Helmet>
-      <div className="mt-5">
-        <section className="">
+      <div>
+        <section>
           <div className="bg-white shadow-xl rounded-lg py-8 lg:py-16 px-5 lg:px-16 lg:w-3/4 mx-auto ">
-            <div>
+            <div className="mt-5">
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 ">
                 Contact Us
               </h2>
@@ -18,7 +36,12 @@ const Contact = () => {
                 Got a technical issue? Want to send feedback about a beta feature? Need details
                 about our Business plan? Let us know.
               </p>
-              <form action="https://formspree.io/f/xbjvlqkk" method="POST" className="space-y-8">
+              <form
+                ref={form}
+                onSubmit={sendEmail}
+                action="https://formspree.io/f/xbjvlqkk"
+                method="POST"
+                className="space-y-8">
                 <div>
                   <label htmlFor="subject" className="label">
                     <span className="label-text"> Name</span>
