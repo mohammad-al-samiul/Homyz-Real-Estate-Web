@@ -12,8 +12,10 @@ const MyCart = () => {
 
   if (cart?.length === 0) {
     return (
-      <div className="w-full h-full flex items-center justify-center">
-        <p className="font-bold text-orange-400  text-3xl">Please go ahead and place your order.</p>
+      <div className="mt-3 w-full lg:h-full flex items-center justify-center">
+        <p className="font-bold text-orange-400  lg:text-3xl">
+          Please go ahead and place your order.
+        </p>
       </div>
     );
   }

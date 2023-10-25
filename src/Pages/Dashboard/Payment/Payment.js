@@ -10,10 +10,10 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISH_KEY);
 
 const Payment = () => {
   const [cart] = useCart();
-  //console.log(cart);
+
   const total = cart.reduce((sum, item) => sum + item.price, 0);
   const price = parseFloat(total.toFixed(2));
-  //console.log(price);
+
   return (
     <div>
       <SectionTitle heading={`Payment`} subHeading={`Please Process`}></SectionTitle>
