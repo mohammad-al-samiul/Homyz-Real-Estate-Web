@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import Stats from '../../../Components/Stats/Stats';
 import BarCharts from './BarCharts';
 import PieCharts from './PieCharts';
@@ -30,7 +31,10 @@ const AdminHome = () => {
   });
   //console.log(adminStats);
   return (
-    <div className="">
+    <div>
+      <Helmet>
+        <title>Regal Dragon | Admin Home</title>
+      </Helmet>
       <h1 className="lg:ml-8 text-3xl font-bold mb-5 text-center mt-5">Hi, Welcome Back!</h1>
       <div className="mx-5 grid grid-cols-1 lg:grid-cols-3 gap-5">
         <Stats adminStats={adminStats} />
