@@ -9,11 +9,14 @@ const PaymentHistory = () => {
   const { data: paymentData = [], isLoading } = useQuery({
     queryKey: ['payment-history', user?.email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/payment-history?email=${user?.email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem('access-token')}`
+      const res = await fetch(
+        `https://regal-dragon-restaurant-server.vercel.app/payment-history?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem('access-token')}`
+          }
         }
-      });
+      );
       return res.json();
     }
   });

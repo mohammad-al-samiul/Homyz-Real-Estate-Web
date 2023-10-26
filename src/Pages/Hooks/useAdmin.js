@@ -9,11 +9,14 @@ const useAdmin = () => {
     queryKey: ['isAdmin', user?.email],
     enabled: !loading,
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/user/admin/${user?.email}`, {
-        headers: {
-          authorization: `bearer ${token}`
+      const res = await fetch(
+        `https://regal-dragon-restaurant-server.vercel.app/user/admin/${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${token}`
+          }
         }
-      });
+      );
       return res.json();
     }
   });

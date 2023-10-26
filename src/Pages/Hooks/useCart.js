@@ -13,11 +13,14 @@ const useCart = () => {
     queryKey: ['cart', user?.email],
     enabled: !loading,
     queryFn: async () => {
-      const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
-        headers: {
-          authorization: `bearer ${token}`
+      const response = await fetch(
+        `https://regal-dragon-restaurant-server.vercel.app/carts?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${token}`
+          }
         }
-      });
+      );
       return response.json();
     }
   });

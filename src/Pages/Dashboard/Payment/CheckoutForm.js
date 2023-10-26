@@ -19,7 +19,7 @@ const CheckoutForm = ({ price, cart }) => {
 
   useEffect(() => {
     if (price > 0) {
-      fetch(`http://localhost:5000/create-payment-intent`, {
+      fetch(`https://regal-dragon-restaurant-server.vercel.app/create-payment-intent`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const CheckoutForm = ({ price, cart }) => {
         itemsName: cart?.map((item) => item.name)
       };
 
-      fetch(`http://localhost:5000/payments`, {
+      fetch(`https://regal-dragon-restaurant-server.vercel.app/payments`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

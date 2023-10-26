@@ -33,7 +33,7 @@ const AddItem = () => {
             image: imgURL
           };
           //console.log(menuItem);
-          fetch(`http://localhost:5000/menu`, {
+          fetch(`https://regal-dragon-restaurant-server.vercel.app/menu`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json',

@@ -12,6 +12,7 @@ const Contact = () => {
     emailjs.sendForm('service_rf0t8tt', 'template_tqfxo2a', form.current, 'PmFGs7THjokSk6B8n').then(
       (result) => {
         if (result.text === 'OK') {
+          e.target.reset();
           Swal.fire('Good job!', 'Email Sent Successfully', 'success');
         }
       },
@@ -28,7 +29,7 @@ const Contact = () => {
       <div>
         <section>
           <div className="bg-white shadow-xl rounded-lg py-8 lg:py-16 px-5 lg:px-16 lg:w-3/4 mx-auto ">
-            <div className="mt-5">
+            <div className="mt-10">
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 ">
                 Contact Us
               </h2>

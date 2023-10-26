@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import {
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword,
+    getAuth,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateProfile
 } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../Firebase/firebase.config';
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        fetch(`http://localhost:5000/jwt`, {
+        fetch(`https://regal-dragon-restaurant-server.vercel.app/jwt`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json'

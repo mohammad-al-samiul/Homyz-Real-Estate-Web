@@ -50,7 +50,7 @@ const Signup = () => {
         profileUpdate(name)
           .then(() => {
             const user = { name, email };
-            fetch(`http://localhost:5000/users`, {
+            fetch(`https://regal-dragon-restaurant-server.vercel.app/users`, {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'

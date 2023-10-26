@@ -12,7 +12,7 @@ const AllUsers = () => {
     queryKey: ['users'],
 
     queryFn: () =>
-      fetch(`http://localhost:5000/users`, {
+      fetch(`https://regal-dragon-restaurant-server.vercel.app/users`, {
         headers: {
           authorization: `bearer ${token}`
         }
@@ -31,7 +31,7 @@ const AllUsers = () => {
       confirmButtonText: 'Yes, Make Admin!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/admin/${user?._id}`, {
+        fetch(`https://regal-dragon-restaurant-server.vercel.app/user/admin/${user?._id}`, {
           method: 'PATCH'
         })
           .then((res) => res.json())
@@ -56,7 +56,7 @@ const AllUsers = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/delete/${user?._id}`, {
+        fetch(`https://regal-dragon-restaurant-server.vercel.app/user/delete/${user?._id}`, {
           method: 'DELETE'
         })
           .then((res) => res.json())
