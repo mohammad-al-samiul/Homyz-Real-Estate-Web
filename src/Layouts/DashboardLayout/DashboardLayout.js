@@ -70,6 +70,11 @@ const DashboardLayout = () => {
                     <FaUsers></FaUsers> <span className="mt-1"> All Users</span>
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to={'/dashboard/payment-history'}>
+                    <FaWallet></FaWallet> <span className="mt-1">Payment History</span>
+                  </NavLink>
+                </li>
               </>
             ) : (
               <>

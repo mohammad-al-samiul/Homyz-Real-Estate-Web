@@ -19,7 +19,7 @@ const FoodCard = ({ item }) => {
     //console.log('item Id : ', item._id);
     if (user && user?.email) {
       const OrderItem = { menuItemId: item?._id, name, image, price, email: user?.email };
-      console.log(OrderItem);
+      //console.log(OrderItem);
       fetch(`https://regal-dragon-restaurant-server.vercel.app/carts`, {
         method: 'POST',
         headers: {
