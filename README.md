@@ -1,4 +1,6 @@
+# Regal Dragon
 
+Title: "Introducing an Innovative Online Ordering Platform: Revolutionizing the Dining Experience"
 I'm thrilled to share the launch of a dynamic and innovative web application that I've had the pleasure to create using cutting-edge technologies like React, Express, MongoDB, and Node.js.
 
 🔐 Secure Authentication & Authorization: With Firebase authentication and JWT authorization, users can enjoy a seamless and secure login experience, while administrators have robust control over user management and access permissions.
